@@ -32,7 +32,7 @@ class ProducerRankingControllerTest {
     private ProducerPersistencePort producerRepositoryPort;
 
     @Test
-    public void testWithOriginalCsvData() {
+    public void whenImportTheOriginalListThenReturnTheLowerAndTheHigherProducerInterval() {
         producerLoaderPort("csv/original-movies-test.csv").load();
 
         ResponseEntity<ProducerRankDetailDTO> response = this.testRestTemplate
@@ -49,7 +49,7 @@ class ProducerRankingControllerTest {
     }
 
     @Test
-    public void testWithSameDiffCsvData() {
+    public void whenHasNoDifferenceBetweenTheLowerAndTheHigherThanReturnTheSameResult() {
         producerLoaderPort("csv/same-diff-min-max-movies-test.csv").load();
 
         ResponseEntity<ProducerRankDetailDTO> response = this.testRestTemplate
