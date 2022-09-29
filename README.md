@@ -9,7 +9,7 @@ Pacote que contem a camada responsavel pela exposição dos dados.
 ### config 
 Pacote responsavel pela configuração dos Bean personalizados.
 ### domain 
-Pacote que contem a regra regras de negocio do projeto.
+Pacote que contem as regras de negocio do projeto.
 
 **Não existe nenhuma dependencia externa de bibliotecas dentro deste pacote apenas codigo java**
 ### infra  
@@ -34,5 +34,5 @@ Os dados podem ser vizualizados pelo seguinte link http://localhost:8080/produce
 
 $${\color{red} ATENÇÃO}$$
 <p align="center">
-  RODAR O PROJETO É NECESSÁRIO ESTAR COM A VERSÃO 17 DO JAVA INSTALADO
+  PARA RODAR O PROJETO É NECESSÁRIO ESTAR COM A VERSÃO 17 DO JAVA INSTALADO
 </p>
