@@ -1,14 +1,15 @@
 package br.com.goldenraspberryawards.api.config;
 
 import br.com.goldenraspberryawards.api.domain.producer.port.in.ProducerDataSourcePort;
-import br.com.badmovie.api.domain.producer.port.out.*;
 import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerLoaderPort;
+import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerPersistencePort;
 import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerRankPort;
 import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerServicePort;
 import br.com.goldenraspberryawards.api.domain.producer.usecase.ProducerLoaderService;
 import br.com.goldenraspberryawards.api.domain.producer.usecase.ProducerService;
+
 import br.com.goldenraspberryawards.api.infra.producer.adapters.csv.ProducerCsvDataSourceAdapter;
-import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerPersistencePort;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;

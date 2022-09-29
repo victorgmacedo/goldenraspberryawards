@@ -17,7 +17,7 @@ public class ProducerRankAdapter implements ProducerRankPort {
     @Override
     public List<ProducerRank> getProducerWithMoreThanOneAward() {
         return em.createQuery("""
-                select new br.com.badmovie.api.domain.producer.data.ProducerRank(a.producer,
+                select new br.com.goldenraspberryawards.api.domain.producer.data.ProducerRank(a.producer,
                        max(a.year) - min(a.year),
                        min(a.year),
                        max(a.year))
