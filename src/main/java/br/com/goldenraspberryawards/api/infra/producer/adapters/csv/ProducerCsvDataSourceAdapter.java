@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import static java.lang.String.*;
 import static java.util.function.Predicate.not;
 import static java.util.stream.StreamSupport.stream;
 
@@ -29,8 +30,8 @@ public class ProducerCsvDataSourceAdapter implements ProducerDataSourcePort {
                     CSVFormat.Builder.create().setDelimiter(';').setSkipHeaderRecord(true).setHeader(
                             CsvHeader.YEAR.name, CsvHeader.TITLE.name, CsvHeader.STUDIO.name, CsvHeader.PRODUCER.name, CsvHeader.WINNER.name
                     ).build());
-        }catch (IOException e){
-            throw new RuntimeException("Error when trying to load file " + filePath);
+        } catch (IOException e) {
+            throw new CsvDataSourceException(format("Error when trying to load file %s. Error: %s", filePath, e.getMessage()));
         }
     }
 
@@ -40,7 +41,7 @@ public class ProducerCsvDataSourceAdapter implements ProducerDataSourcePort {
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();
             return stream(csvRecords.spliterator(), true).map(this::mapRecordToMovie).flatMap(List::stream).toList();
         } catch (Exception e) {
-            throw new RuntimeException("Error when try to read data from CVS");
+            throw new CsvDataSourceException(format("Error when trying to read data. Error: %s", e.getMessage()));
         }
     }
 
