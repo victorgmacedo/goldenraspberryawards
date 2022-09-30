@@ -1,3 +1,4 @@
+
 ## Architecture
 O projeto foi escrito utilizando a abordagem da estrutura hexagonal,
 não foi utilizada a estrutura de modulos para separacao das camadas, mas sim 
@@ -8,7 +9,7 @@ Pacote que contem a camada responsavel pela exposição dos dados.
 ### config 
 Pacote responsavel pela configuração dos Bean personalizados.
 ### domain 
-Pacote que contem a regra regras de negocio do projeto.
+Pacote que contem as regras de negocio do projeto.
 
 **Não existe nenhuma dependencia externa de bibliotecas dentro deste pacote apenas codigo java**
 ### infra  
@@ -30,3 +31,8 @@ Os dados podem ser vizualizados pelo seguinte link http://localhost:8080/produce
 
 ## Run tests
 ``./gradlew test``
+
+$${\color{red} ATENÇÃO}$$
+<p align="center">
+  PARA RODAR O PROJETO É NECESSÁRIO ESTAR COM A VERSÃO 17 DO JAVA INSTALADO
+</p>
