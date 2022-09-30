@@ -15,7 +15,7 @@ public class ProducerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "`year`")
-    private Integer year;
+    private int year;
     private String title;
     private String studio;
     private String producer;

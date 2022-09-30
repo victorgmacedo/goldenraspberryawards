@@ -52,8 +52,8 @@ public class ProducerCsvDataSourceAdapter implements ProducerDataSourcePort {
         var producer = getValue(csvRecord, CsvHeader.PRODUCER);
         var winner = getValue(csvRecord, CsvHeader.WINNER, "yes"::equals);
 
-        return Arrays.stream(producer.replace("and", ",").split(","))
-                .filter(not(String::isEmpty))
+        return Arrays.stream(producer.replace(" and", ",").split(","))
+                .filter(not(String::isBlank))
                 .map(String::trim)
                 .map(String::toUpperCase)
                 .map(producerName -> new Producer(year, title, studio, producerName, winner))

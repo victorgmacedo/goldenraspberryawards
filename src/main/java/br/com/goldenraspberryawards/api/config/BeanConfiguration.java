@@ -3,7 +3,6 @@ package br.com.goldenraspberryawards.api.config;
 import br.com.goldenraspberryawards.api.domain.producer.port.in.ProducerDataSourcePort;
 import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerLoaderPort;
 import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerPersistencePort;
-import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerRankPort;
 import br.com.goldenraspberryawards.api.domain.producer.port.out.ProducerServicePort;
 import br.com.goldenraspberryawards.api.domain.producer.usecase.ProducerLoaderService;
 import br.com.goldenraspberryawards.api.domain.producer.usecase.ProducerService;
@@ -42,8 +41,8 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public ProducerServicePort producerReportPort(ProducerRankPort producerRankPort) {
-        return new ProducerService(producerRankPort);
+    public ProducerServicePort producerReportPort(ProducerPersistencePort producerPersistencePort) {
+        return new ProducerService(producerPersistencePort);
     }
 
     @Bean

@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class ProducerRepositoryAdapter implements ProducerPersistencePort {
@@ -19,5 +21,19 @@ public class ProducerRepositoryAdapter implements ProducerPersistencePort {
         ProducerEntity entity = new ProducerEntity();
         BeanUtils.copyProperties(producer, entity);
         repository.save(entity);
+    }
+
+    public List<Producer> findAllWinnersWithMoreThanOneAward() {
+        return repository.findAllWinnerTrue().stream().map(this::mapProducerEntityToProducer).toList();
+    }
+
+    private Producer mapProducerEntityToProducer(ProducerEntity producerEntity){
+        return new Producer(
+                producerEntity.getYear(),
+                producerEntity.getTitle(),
+                producerEntity.getStudio(),
+                producerEntity.getProducer(),
+                producerEntity.getWinner()
+        );
     }
 }

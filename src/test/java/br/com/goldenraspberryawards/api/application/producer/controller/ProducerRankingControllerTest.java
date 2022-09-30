@@ -65,6 +65,24 @@ class ProducerRankingControllerTest {
         MatcherAssert.assertThat(response.getBody().min(), Matchers.containsInAnyOrder(max, min));
     }
 
+    @Test
+    public void whenHasMoreThanTwoAwardsThenReturnTheFollowAwardWithHighestInterval() {
+        producerLoaderPort("csv/more-than-one-time-winner.csv").load();
+
+        ResponseEntity<ProducerRankDetailDTO> response = this.testRestTemplate
+                .exchange("/producer-rank", HttpMethod.GET, null, ProducerRankDetailDTO.class);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().max().size(), 1);
+        assertEquals(response.getBody().min().size(), 2);
+
+        ProducerRankDTO max = new ProducerRankDTO("PRODUCER 2", 20, 2000, 2020);
+        ProducerRankDTO minP1 = new ProducerRankDTO("PRODUCER 1", 10, 1980, 1990);
+        ProducerRankDTO minP2 = new ProducerRankDTO("PRODUCER 2", 10, 1990, 2000);
+
+        MatcherAssert.assertThat(response.getBody().max(), Matchers.containsInAnyOrder(max));
+        MatcherAssert.assertThat(response.getBody().min(), Matchers.containsInAnyOrder(minP1, minP2));
+    }
+
     private ProducerLoaderPort producerLoaderPort(String path) {
         return new ProducerLoaderService(new ProducerCsvDataSourceAdapter(path), producerRepositoryPort);
     }
